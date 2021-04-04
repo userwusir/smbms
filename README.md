@@ -1,14 +1,14 @@
-## smbmsÑ§Ï°±Ê¼Ç£¨·şÎñÆ÷¶Ë£©
+## smbmså­¦ä¹ ç¬”è®°ï¼ˆæœåŠ¡å™¨ç«¯ï¼‰
 
-´óÖÂµÄÒ»¸öÁ÷³Ì£¬´ÓÓÃ»§µÄpojoµ½dao²ã´´½¨£¬service²ãºÍµÇÂ¼¡¢µÇ³öservlet²ãµÄÊéĞ´¡£
+å¤§è‡´çš„ä¸€ä¸ªæµç¨‹ï¼Œä»ç”¨æˆ·çš„pojoåˆ°daoå±‚åˆ›å»ºï¼Œserviceå±‚å’Œç™»å½•ã€ç™»å‡ºservletå±‚çš„ä¹¦å†™ã€‚
 
-![image-20210331095832615](C:\Users\wulele\AppData\Roaming\Typora\typora-user-images\image-20210331095832615.png)
+![image-20210331095832615](img\image-20210331095832615.png)
 
-### ÎÄ¼şÄ¿Â¼
+### æ–‡ä»¶ç›®å½•
 
-![image-20210330224512776](C:\Users\wulele\AppData\Roaming\Typora\typora-user-images\image-20210330224512776.png)
+![image-20210330224512776](img\image-20210330224512776.png)
 
-### pojo²ã£¨User£©
+### pojoå±‚ï¼ˆUserï¼‰
 
 ```java
 package com.wll.pojo;
@@ -21,7 +21,7 @@ import java.util.Date;
 /**
  * @author wulele
  * <p>
- * ÓÃ»§±í
+ * ç”¨æˆ·è¡¨
  */
 @Getter
 @Setter
@@ -59,7 +59,7 @@ public class User {
 }
 ```
 
-### ¹«¹²Àà
+### å…¬å…±ç±»
 
 ```java
 package com.wll.dao;
@@ -72,7 +72,7 @@ import java.util.Properties;
 /**
  * @author wulele
  * <p>
- * ²Ù×÷Êı¾İ¿â¹«¹²Àà
+ * æ“ä½œæ•°æ®åº“å…¬å…±ç±»
  */
 public class BaseDao {
     private static String driver;
@@ -82,7 +82,7 @@ public class BaseDao {
 
     static {
         Properties properties = new Properties();
-        //Í¨¹ıÀà¼ÓÔØÆ÷¶ÁÈ¡×ÊÔ´
+        //é€šè¿‡ç±»åŠ è½½å™¨è¯»å–èµ„æº
         InputStream rs = BaseDao.class.getClassLoader().getResourceAsStream("db.properties");
         try {
             properties.load(rs);
@@ -97,45 +97,45 @@ public class BaseDao {
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Connection connection = null;
-        //·´Éä»ñÈ¡¶ÔÏó
+        //åå°„è·å–å¯¹è±¡
         Class.forName(driver);
         connection = DriverManager.getConnection(url, username, password);
         return connection;
     }
 
     /**
-     * ²éÑ¯¹«¹²Àà
+     * æŸ¥è¯¢å…¬å…±ç±»
      */
     public static PreparedStatement execute(Connection connection, String sql, Object[] params, PreparedStatement preparedStatement, ResultSet resultSet) throws SQLException {
         preparedStatement = connection.prepareStatement(sql);
         for (int i = 0; i < params.length; i++) {
-            //preparedStatementÕ¼Î»·û´Ó1¿ªÊ¼
+            //preparedStatementå ä½ç¬¦ä»1å¼€å§‹
             preparedStatement.setObject(i + 1, params[i]);
         }
         return preparedStatement;
     }
 
     /**
-     * ÔöÉ¾¸Ä¹²Àà
+     * å¢åˆ æ”¹å…±ç±»
      */
     public static PreparedStatement executeUpdate(Connection connection, String sql, Object[] params, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement = connection.prepareStatement(sql);
         for (int i = 0; i < params.length; i++) {
-            //preparedStatementÕ¼Î»·û´Ó1¿ªÊ¼
+            //preparedStatementå ä½ç¬¦ä»1å¼€å§‹
             preparedStatement.setObject(i + 1, params[i]);
         }
         return preparedStatement;
     }
 
     /**
-     * ¹Ø±Õ×ÊÔ´
+     * å…³é—­èµ„æº
      */
     public static boolean closeResources(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) {
         boolean flag = true;
         if (resultSet != null) {
             try {
                 resultSet.close();
-                //GC»ØÊÕ
+                //GCå›æ”¶
                 resultSet = null;
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -166,7 +166,7 @@ public class BaseDao {
 
 ```
 
-### ³Ö¾Ã²ã£¨UserDao¡¢UserDaoImpl£©
+### æŒä¹…å±‚ï¼ˆUserDaoã€UserDaoImplï¼‰
 
 ```java
 package com.wll.dao.user;
@@ -239,7 +239,7 @@ public class UserDaoImpl implements UserDao {
 }
 ```
 
-### Service²ã£¨UserService¡¢UserServiceImpl£©
+### Serviceå±‚ï¼ˆUserServiceã€UserServiceImplï¼‰
 
 ```java
 package com.wll.service.user;
@@ -275,7 +275,7 @@ import java.sql.SQLException;
  * @author wulele
  */
 public class UserServiceImpl implements UserService{
-    /** ÒµÎñ²ãµ÷ÓÃDao²ã */
+    /** ä¸šåŠ¡å±‚è°ƒç”¨Daoå±‚ */
     private UserDao userDao;
     public UserServiceImpl(){
         userDao = new UserDaoImpl();
@@ -301,7 +301,7 @@ public class UserServiceImpl implements UserService{
 }
 ```
 
-### Servlet²ã£¨LoginServlet ¡¢LogutServlet£©
+### Servletå±‚ï¼ˆLoginServlet ã€LogutServletï¼‰
 
 ```java
 package com.wll.servlet.user;
@@ -328,15 +328,15 @@ public class LoginServlet extends HttpServlet {
         UserService userService = new UserServiceImpl();
         User user = userService.login(userCode, userPassword);
         if(user!=null){
-            //µÇÂ¼±£´æsession
+            //ç™»å½•ä¿å­˜session
             req.getSession().setAttribute(Constant.USER_SESSION,user);
-            //ÖØ¶¨ÏòµØÖ··¢Éú±ä»¯£¬ÏîÄ¿µØÖ·Îª smbms
+            //é‡å®šå‘åœ°å€å‘ç”Ÿå˜åŒ–ï¼Œé¡¹ç›®åœ°å€ä¸º smbms
             resp.sendRedirect("/smbms/jsp/frame.jsp");
             //resp.sendRedirect(req.getContextPath()+"/jsp/frame.jsp");
         }else {
-            //´íÎóĞÅÏ¢Ö»ÔÚÒ»´ÎÇëÇóÖĞÓĞĞ§
-            req.setAttribute("error","ÕËºÅ»òÃÜÂëÓĞÎó");
-            //ÇëÇó×ª·¢£¬µØÖ·²»·¢Éú±ä»¯£¬request¶ÔÏóÎ´Ïú»Ù£¬errorĞÅÏ¢±£Áô
+            //é”™è¯¯ä¿¡æ¯åªåœ¨ä¸€æ¬¡è¯·æ±‚ä¸­æœ‰æ•ˆ
+            req.setAttribute("error","è´¦å·æˆ–å¯†ç æœ‰è¯¯");
+            //è¯·æ±‚è½¬å‘ï¼Œåœ°å€ä¸å‘ç”Ÿå˜åŒ–ï¼Œrequestå¯¹è±¡æœªé”€æ¯ï¼Œerrorä¿¡æ¯ä¿ç•™
             req.getRequestDispatcher("/login.jsp").forward(req,resp);
         }
     }
@@ -376,7 +376,7 @@ public class LogoutServlet extends HttpServlet {
 }
 ```
 
-### ×Ö·û¹ıÂËÆ÷¡¢µÇ³ö¹ıÂËÆ÷
+### å­—ç¬¦è¿‡æ»¤å™¨ã€ç™»å‡ºè¿‡æ»¤å™¨
 
 ```java
 package com.wll.filter;
