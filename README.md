@@ -6,7 +6,7 @@
 
 ### 文件目录
 
-![image-20210330224512776](img\image-20210330224512776.png)
+![image-20210330224512776](https://github.com/userwusir/smbms/blob/master/img/image-20210330224512776.png?raw=true)
 
 ### pojo层（User）
 
