@@ -4,7 +4,6 @@ import com.wll.pojo.User;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -54,5 +53,5 @@ public interface UserDao {
      * @return userinfo list
      * @throws Exception
      */
-    public List<User> getUserinfoList(Connection connection, String userName, int userRole, int currentPageNo, int pageSize)throws Exception;
+    public List<User> getUserinfoList(Connection connection, String userName, int userRole, int currentPageNo, int pageSize) throws Exception;
 }

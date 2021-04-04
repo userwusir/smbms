@@ -33,7 +33,7 @@
     <!--alert password servlet-->
     <servlet>
         <servlet-name>AlertPswServlet</servlet-name>
-        <servlet-class>com.wll.servlet.user.AlertPswServlet</servlet-class>
+        <servlet-class>com.wll.servlet.user.UserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AlertPswServlet</servlet-name>

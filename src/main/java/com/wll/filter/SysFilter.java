@@ -22,10 +22,10 @@ public class SysFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         User user = (User) req.getSession().getAttribute(Constant.USER_SESSION);
-        if(user ==null){
+        if (user == null) {
             resp.sendRedirect("/smbms/error.jsp");
-        }else {
-            chain.doFilter(request,response);
+        } else {
+            chain.doFilter(request, response);
         }
     }
 

@@ -4,7 +4,6 @@ import com.wll.dao.BaseDao;
 import com.wll.dao.user.UserDao;
 import com.wll.dao.user.UserDaoImpl;
 import com.wll.pojo.User;
-import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -88,12 +87,5 @@ public class UserServiceImpl implements UserService {
             BaseDao.closeResources(connection, null, null);
         }
         return userList;
-    }
-
-    @Test
-    public void test(){
-        UserServiceImpl userService = new UserServiceImpl();
-        List<User> user = userService.getUserinfoList(null,0,1,5);
-        System.out.println(user);
     }
 }

@@ -102,7 +102,7 @@ public class UserDaoImpl implements UserDao {
                 list.add("%" + userName + "%");
             }
             if (userRole > 0) {
-                sql.append(" and a.userName = ?");
+                sql.append(" and a.userRole = ?");
                 list.add(userRole);
             }
             sql.append(" order by creationDate DESC limit ?,?");

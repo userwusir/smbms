@@ -2,8 +2,6 @@ package com.wll.service.user;
 
 import com.wll.pojo.User;
 
-import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,14 +10,16 @@ import java.util.List;
 public interface UserService {
     /**
      * method for user login.
+     *
      * @param userCode
      * @param password
      * @return
      */
-    public User login(String userCode,String password);
+    public User login(String userCode, String password);
 
     /**
      * alert user password
+     *
      * @param id
      * @param password
      * @return
@@ -28,14 +28,16 @@ public interface UserService {
 
     /**
      * get user count
+     *
      * @param userName
      * @param userRole
      * @return
      */
-    public int getUserCount(String userName,int userRole);
+    public int getUserCount(String userName, int userRole);
 
     /**
      * get userinfo list
+     *
      * @param userName
      * @param userRole
      * @param currentPageNo

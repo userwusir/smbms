@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * @author wulele
- *
+ * <p>
  * 供应商表
  */
 @Getter

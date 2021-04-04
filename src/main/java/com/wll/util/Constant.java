@@ -5,4 +5,6 @@ package com.wll.util;
  */
 public class Constant {
     public static final String USER_SESSION = "userSession";
+    public final static String SYS_MESSAGE = "message";
+    public final static int pageSize = 5;
 }

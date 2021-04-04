@@ -78,7 +78,7 @@ public class BaseDao {
                 flag = false;
             }
         }
-        if(preparedStatement!=null){
+        if (preparedStatement != null) {
             try {
                 preparedStatement.close();
                 preparedStatement = null;
@@ -87,7 +87,7 @@ public class BaseDao {
                 flag = false;
             }
         }
-        if(connection != null){
+        if (connection != null) {
             try {
                 connection.close();
                 connection = null;
