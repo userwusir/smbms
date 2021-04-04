@@ -2,7 +2,7 @@
 
 大致的一个流程，从用户的pojo到dao层创建，service层和登录、登出servlet层的书写。
 
-![image-20210331095832615](https://github.com/userwusir/smbms/blob/master/img/image-20210331095832615.png?raw=trueimg\image-20210331095832615.png)
+![image-20210331095832615](https://github.com/userwusir/smbms/blob/master/imgs/image-20210331095832615.png?raw=trueimg\image-20210331095832615.png)
 
 ### 文件目录
 
